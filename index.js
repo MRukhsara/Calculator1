@@ -4,12 +4,16 @@ let dotAdded = false;
 
 function appendToDisplay(value) {
     if (value === '±') {
-        inputDisplay.textContent = inputDisplay.textContent.charAt(0) === '-' 
-            ? inputDisplay.textContent.slice(1) 
+        inputDisplay.textContent = inputDisplay.textContent.charAt(0) === '-'
+            ? inputDisplay.textContent.slice(1)
             : '-' + inputDisplay.textContent;
     } else if (value === '×') {
         inputDisplay.textContent += '*';
+        dotAdded = false;
     } else if (value === '←') {
+        if (inputDisplay.textContent.slice(-1) === '.') {
+            dotAdded = false;
+        }
         inputDisplay.textContent = inputDisplay.textContent.slice(0, -1);
     } else if (value === '.' && !dotAdded) {
         inputDisplay.textContent += '.';
@@ -17,7 +21,11 @@ function appendToDisplay(value) {
     } else if (value >= '0' && value <= '9') {
         inputDisplay.textContent += value;
     } else if (value === '%') {
-        inputDisplay.textContent += '%'; // Faiz işarəsini əlavə edirik
+        inputDisplay.textContent += '%';
+        dotAdded = false;
+    } else if (['+', '-', '*', '/'].includes(value)) {
+        inputDisplay.textContent += value;
+        dotAdded = false;
     }
 }
 
@@ -40,12 +48,10 @@ function calculate() {
     try {
         let expression = inputDisplay.textContent;
 
-        // Əgər `%` işarəsi varsa, onu bölmə əməli kimi işləmək üçün dəyişdiririk
         expression = expression.replace(/(\d+)%(\d+)/g, (match, num1, num2) => {
             return `(${num1} * ${num2} / 100)`;
         });
 
-        // İfadəni hesablayırıq
         const result = eval(expression);
         resultDisplay.textContent = `= ${formatNumber(result.toString())}`;
         dotAdded = false;
@@ -53,4 +59,3 @@ function calculate() {
         resultDisplay.textContent = 'Error';
     }
 }
-
