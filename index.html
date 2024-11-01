@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with SVG Background</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG Background -->
+    <svg class="background-svg" width="100" height="150" viewBox="0 0 557 683" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M162.047 402.633C219.047 608.133 54.4734 551.362 6.047 620.633C-42.3794 689.904 255.385 699.001 306.547 660.133C370.499 611.549 278.262 379.99 463.262 324.99C648.262 269.99 543.738 -116.148 278.729 35.817C13.7204 187.782 105.047 197.133 162.047 402.633Z" fill="url(#paint0_angular_5_4)"/>
+        <defs>
+            <radialGradient id="paint0_angular_5_4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(288 174) rotate(122.451) scale(130.155 130.155)">
+                <stop offset="0.121677" stop-color="#72aeeb"/>
+                <stop offset="0.74904" stop-color="#49b4f2" stop-opacity="1.5"/>
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <!-- Calculator -->
+    <div id="calculator">
+        <div id="display-container">
+            <div id="input"></div>
+            <div id="result"></div>
+            <hr class="separator">
+        </div>
+        <div id="keys">
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendToDisplay('%')" class="operator-btn">%</button>
+            <button onclick="appendToDisplay('×')" class="operator-btn">×</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('±')" class="operator-btn">±</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('←')" class="operator-btn">←</button>
+            <button onclick="calculate()" class="operator-btn">=</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
